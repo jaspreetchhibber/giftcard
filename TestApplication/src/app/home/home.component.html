@@ -1,0 +1,31 @@
+<h1>Hi {{currentUser.firstName}}!</h1>
+<p>You're logged in with Angular 8!!</p>
+<h3>GiftCards    <a routerLink="/giftcard" class="btn btn-primary">Add New GiftCard</a></h3>
+<!-- <ul>
+    <li *ngFor="let giftcard of giftcards">
+        {{giftcard.giftCardNumber}} ({{giftcard.value}} {{giftcard.type}})        
+        - <a (click)="deleteUser(giftcard.giftCardId)" class="text-danger">Delete</a>
+    </li>
+</ul> -->
+<table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Website</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let giftcard of giftcards">
+           <td>{{giftcard.giftCardNumber}}</td>
+           <td>{{giftcard.value}}</td>
+           <td>{{giftcard.type}}</td>
+           <!-- <td><a routerLink="/giftcard" class="nav-item nav-link">Edit</a></td> -->
+           <td><a [routerLink]="['/giftcard/', giftcard.giftCardId]" class="nav-item nav-link">Edit</a></td>
+           <!-- <td><a [routerLink]="['/giftcard/', giftcard.giftCardId]" class="nav-item nav-link">Edit</a></td> -->
+           <td><a (click)="deleteGiftCard(giftcard.giftCardId)" class="nav-item nav-link text-danger">Delete</a></td>
+       </tr>
+    </tbody>
+  

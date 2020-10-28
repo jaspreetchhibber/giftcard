@@ -1,0 +1,46 @@
+<h2>Giftcard</h2>
+<form [formGroup]="giftcardForm" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="giftCardId" class="form-control"/>  
+  <input type="hidden" formControlName="userId" class="form-control"/>  
+  <div class="form-group">
+        <label for="giftCardNumber">GiftCard Number</label>
+        <input type="text" formControlName="giftCardNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.giftCardNumber.errors }" />
+        <div *ngIf="submitted && f.giftCardNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.giftCardNumber.errors.required">GiftCard Number is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="value">Value</label>
+        <input type="number" formControlName="value" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.value.errors }" />
+        <div *ngIf="submitted && f.value.errors" class="invalid-feedback">
+            <div *ngIf="f.value.errors.required">value is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="type">Type</label>
+        <select formControlName="type" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+          <option value="" disabled>Choose type</option>
+          <option value="Annually">Annually</option>
+          <option value="Monthly">Monthly</option>
+        </select>
+        <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+            <div *ngIf="f.type.errors.required">Type is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="status">Status</label>
+        <input type="checkbox" formControlName="status" class="form-check-input" style="margin-left: 1.75rem!important;" [ngClass]="{ 'is-invalid': submitted && f.status.errors }" />
+        <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+            <div *ngIf="f.status.errors.required">Status is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Submit
+        </button>
+        <a routerLink="/home" class="btn btn-link">Cancel</a>
+    </div>
+</form>
+Back to top
+ 
